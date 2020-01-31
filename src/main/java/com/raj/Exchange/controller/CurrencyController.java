@@ -19,17 +19,19 @@ public class CurrencyController {
     // @GetMapping(value="currency", produces = MediaType.APPLICATION_JSON_VALUE)
     @GetMapping
     // @ResponseBody
+
     public ResponseEntity<List<Usd>> getCurrency() {
         RestTemplate template = new RestTemplate();
-        ResponseEntity<List<Usd>> gold =
-                template.exchange("http://api.nbp.pl/api/exchangerates/tables/a?format=json",
+        ResponseEntity<List<Usd>> listCurrenies =
+                template.exchange("http://api.nbp.pl/api/exchangerates/tables/a",
                         HttpMethod.GET, null, new ParameterizedTypeReference<List<Usd>>() {
-                        });
+                });
+        //listCurrenies.forEach( s -> System.out.println(s.getCurrency()));
         // Usd usd = template.getForObject("http://api.nbp.pl/api/exchangerates/rates/a/usd", Usd.class);
 
         //System.out.println(gold.getBody().get(0).getCurrency().toString());
         // return new JSONObject.SimpleEntry<Integer, Usd>(0, usd);
-        return gold;
+        return  listCurrenies;
     }
 
     @PostMapping("exchange")
@@ -44,7 +46,7 @@ public class CurrencyController {
         RestTemplate template = new RestTemplate();
 
         if (!toChange.getFirst().equalsIgnoreCase("pln")) {
-            firstMid = template.getForObject("http://api.nbp.pl/api/exchangerates/rates/a/"
+            firstMid = template.getForObject("http://api.nbp.pl/api/exchangerates/rates/a?format=json"
                     + toChange.getFirst(), Usd.class);
         } else firstMid.setRates(rates);
 

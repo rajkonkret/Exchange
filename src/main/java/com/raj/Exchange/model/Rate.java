@@ -6,16 +6,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Rate {
-    @JsonProperty("no")
-    private String no;
+//    @JsonProperty("no")
+//    private String no;
     @JsonProperty("code")
     private String code;
-    @JsonProperty("effectiveDate")
-    private String effectiveDate;
-    @JsonProperty("bid")
-    private Double bid;
-    @JsonProperty("ask")
-    private Double ask;
+//    @JsonProperty("effectiveDate")
+//    private String effectiveDate;
+//    @JsonProperty("bid")
+//    private Double bid;
+//    @JsonProperty("ask")
+//    private Double ask;
     @JsonProperty("mid")
     private Double mid;
 
@@ -31,45 +31,45 @@ public class Rate {
         this.code = code;
     }
 
-    @JsonProperty("no")
-    public String getNo() {
-        return no;
-    }
+//    @JsonProperty("no")
+//    public String getNo() {
+//        return no;
+//    }
+//
+//    @JsonProperty("no")
+//    public void setNo(String no) {
+//        this.no = no;
+//    }
+//
+//    @JsonProperty("effectiveDate")
+//    public String getEffectiveDate() {
+//        return effectiveDate;
+//    }
+//
+//    @JsonProperty("effectiveDate")
+//    public void setEffectiveDate(String effectiveDate) {
+//        this.effectiveDate = effectiveDate;
+//    }
 
-    @JsonProperty("no")
-    public void setNo(String no) {
-        this.no = no;
-    }
-
-    @JsonProperty("effectiveDate")
-    public String getEffectiveDate() {
-        return effectiveDate;
-    }
-
-    @JsonProperty("effectiveDate")
-    public void setEffectiveDate(String effectiveDate) {
-        this.effectiveDate = effectiveDate;
-    }
-
-    @JsonProperty("bid")
-    public Double getBid() {
-        return bid;
-    }
-
-    @JsonProperty("bid")
-    public void setBid(Double bid) {
-        this.bid = bid;
-    }
-
-    @JsonProperty("ask")
-    public Double getAsk() {
-        return ask;
-    }
-
-    @JsonProperty("ask")
-    public void setAsk(Double ask) {
-        this.ask = ask;
-    }
+//    @JsonProperty("bid")
+//    public Double getBid() {
+//        return bid;
+//    }
+//
+//    @JsonProperty("bid")
+//    public void setBid(Double bid) {
+//        this.bid = bid;
+//    }
+//
+//    @JsonProperty("ask")
+//    public Double getAsk() {
+//        return ask;
+//    }
+//
+//    @JsonProperty("ask")
+//    public void setAsk(Double ask) {
+//        this.ask = ask;
+//    }
 
     @JsonProperty("mid")
     public Double getMid() {
