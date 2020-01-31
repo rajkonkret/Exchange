@@ -7,8 +7,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ToChange {
     @JsonProperty("first")
     private String first;
+
     @JsonProperty("second")
     private String second;
+
     @JsonProperty("value")
     private Double value;
 
