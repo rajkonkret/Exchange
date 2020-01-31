@@ -11,63 +11,43 @@ public class Usd {
 
     @JsonProperty("table")
     private String table;
-    @JsonProperty("currency")
-    private String currency;
-    @JsonProperty("code")
-    private String code;
+
+    @JsonProperty("effectiveDate")
+    private String effectiveDate;
+
     @JsonProperty("rates")
     private List<Rate> rates = null;
-//    @JsonIgnore
-//    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("table")
+
+  //  @JsonProperty("table")
     public String getTable() {
         return table;
     }
 
-    @JsonProperty("table")
+  //  @JsonProperty("table")
     public void setTable(String table) {
         this.table = table;
     }
 
-    @JsonProperty("currency")
-    public String getCurrency() {
-        return currency;
+    //@JsonProperty("effectiveDate")
+    public String getEffectiveDate() {
+        return effectiveDate;
     }
 
-    @JsonProperty("currency")
-    public void setCurrency(String currency) {
-        this.currency = currency;
+  //  @JsonProperty("effectiveDate")
+    public void setEffectiveDate(String effectiveDate) {
+        this.effectiveDate = effectiveDate;
     }
 
-    @JsonProperty("code")
-    public String getCode() {
-        return code;
-    }
-
-    @JsonProperty("code")
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    @JsonProperty("rates")
+ //   @JsonProperty("rates")
     public List<Rate> getRates() {
         return rates;
     }
 
-    @JsonProperty("rates")
+  //  @JsonProperty("rates")
     public void setRates(List<Rate> rates) {
         this.rates = rates;
     }
-//
-//    @JsonAnyGetter
-//    public Map<String, Object> getAdditionalProperties() {
-//        return this.additionalProperties;
-//    }
-//
-//    @JsonAnySetter
-//    public void setAdditionalProperty(String name, Object value) {
-//        this.additionalProperties.put(name, value);
-//    }
+
 }
 
