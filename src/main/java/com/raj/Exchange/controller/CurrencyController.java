@@ -56,12 +56,12 @@ public class CurrencyController {
         RestTemplate template = new RestTemplate();
 
         if (!toChange.getFirst().equalsIgnoreCase("pln")) {
-            firstMid = template.getForObject("http://api.nbp.pl/api/exchangerates/rates/a/"
+            firstMid = template.getForObject("https://api.nbp.pl/api/exchangerates/rates/a/"
                     + toChange.getFirst(), Usd.class);
         } else firstMid.setRates(rates);
 
         if (!toChange.getSecond().equalsIgnoreCase("pln")) {
-            secondMid = template.getForObject("http://api.nbp.pl/api/exchangerates/rates/a/"
+            secondMid = template.getForObject("https://api.nbp.pl/api/exchangerates/rates/a/"
                     + toChange.getSecond(), Usd.class);
         } else  secondMid.setRates(rates);
 
