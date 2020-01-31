@@ -20,9 +20,9 @@ import java.util.List;
 public class CurrencyController {
 
     // @GetMapping(value="currency", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
    // @CrossOrigin
     @GetMapping("exchange")
+    @ResponseBody
     public ResponseEntity<List<Usd>> getCurrency() {
         RestTemplate template = new RestTemplate();
         //Joke joke = template.getForObject("https://api.chucknorris.io/jokes/random", Joke.class);
