@@ -27,7 +27,7 @@ public class CurrencyController {
         RestTemplate template = new RestTemplate();
         //Joke joke = template.getForObject("https://api.chucknorris.io/jokes/random", Joke.class);
         ResponseEntity<List<Usd>> gold =
-                template.exchange("http://api.nbp.pl/api/exchangerates/tables/B/?format=json",
+                template.exchange("https://api.nbp.pl/api/exchangerates/tables/B/?format=json",
                         HttpMethod.GET, null, new ParameterizedTypeReference<List<Usd>>() {
                         });
 //        // Usd usd = template.getForObject("http://api.nbp.pl/api/exchangerates/rates/a/usd", Usd.class);
