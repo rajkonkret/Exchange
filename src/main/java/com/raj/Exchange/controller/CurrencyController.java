@@ -3,13 +3,18 @@ package com.raj.Exchange.controller;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.raj.Exchange.model.*;
+import com.raj.Exchange.repository.LogingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 
+import javax.security.auth.login.LoginContext;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +26,8 @@ public class CurrencyController {
 
     // @GetMapping(value="currency", produces = MediaType.APPLICATION_JSON_VALUE)
     //@ResponseBody
+    //@Autowired
+    //LogTable logTable= new LogTable();
     @CrossOrigin
     @GetMapping("exchange")
     public List<UsdToSearch> getCurrency() throws IOException {
@@ -32,6 +39,8 @@ public class CurrencyController {
                 HttpMethod.GET,
                 null, new ParameterizedTypeReference<List<UsdToSearch>>() {
                 }).getBody();
+        //System.out.println(httpRequest);
+
         return gold;
 //        ObjectMapper objectMapper = new ObjectMapper();
 //        UsdToSearch[] listCurencies = (template.getForEntity(url,UsdToSearch[].class)).getBody();

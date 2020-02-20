@@ -8,6 +8,9 @@ public class PreAuthTokenHeaderFilter
         extends AbstractPreAuthenticatedProcessingFilter {
 
     private String authHeaderName;
+    private String requestUrl;
+    private String requestMethod;
+    private boolean headerIsNull;
 
     public PreAuthTokenHeaderFilter(String authHeaderName) {
         this.authHeaderName = authHeaderName;
@@ -15,15 +18,42 @@ public class PreAuthTokenHeaderFilter
 
     @Override
     protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
+        this.requestUrl = request.getRequestURL().toString();
+        //System.out.println(requestUrl);
+        this.requestMethod = request.getMethod().toString();
+        if (request.getHeader("key") == null) {
+            System.out.println("Brak tokena !!!");
+            this.headerIsNull = true;
+        }
+        // System.out.println("PRe auth" + request.getRequestURL());
         return request.getHeader(authHeaderName);
 
     }
 
     @Override
     protected Object getPreAuthenticatedCredentials(HttpServletRequest request) {
-       return "N/A";
-       //return request.getRequestURL();
+        //System.out.println("PRe auth" + request.getRequestURL());
+        return request.getHeader("N/a");
+        //return request.getRequestURL();
     }
 
+    public String getRequestUrl() {
+        return requestUrl;
+    }
 
+    public void setRequestUrl(String requestUrl) {
+        this.requestUrl = requestUrl;
+    }
+
+    public String getRequestMethod() {
+        return requestMethod;
+    }
+
+    public void setRequestMethod(String requestMethod) {
+        this.requestMethod = requestMethod;
+    }
+
+    public boolean isHeaderIsNull() {
+        return headerIsNull;
+    }
 }
