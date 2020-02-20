@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="myOnLoad()">
+<p id="listcur"></p>
+<form id="frm1">
+    First currency: <input type="text" name="fname" value="pln"><br>
+    Second currency: <input type="text" name="lname" value="eur"><br><br>
+    Value: <input type="text" name="lname" value="100"><br><br>
+</form>
+
+<p>Exchange</p>
+
+<button onclick="myFunction()">Do it!</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+const url = "https://exchange-app-raj.herokuapp.com/api/exchange";
+var x = document.getElementById("frm1");
+var text = "";
+var text = x.elements[0].value;
+var ob = { first: "usd", second: "pln", value: 100}
+ob.first = text;
+var text = x.elements[1].value;
+ob.second = text;
+var text = x.elements[2].value;
+ob.value = text*1;
+fetch(url, {
+    method: "post",
+    headers: {
+    "Content-Type": "application/json"
+    },
+    body: JSON.stringify(ob)
+    })
+    .then(res => res.json())
+    .then(res => {
+    document.getElementById("demo").innerHTML = res;
+    })
+}
+function myOnLoad(){
+const url = "https://exchange-app-raj.herokuapp.com/api/exchange";
+    fetch(url)
+    .then(res => res.json())
+    .then(res => {
+    for (i = 0; i < res[0].rates.length; i++){
+    document.getElementById("listcur").innerHTML += res[0].rates[i].code +" "
+    }
+    console.log(res);
+    })
+}
+
+</script>
+</body>
+</html>
