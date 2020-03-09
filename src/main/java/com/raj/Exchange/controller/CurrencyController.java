@@ -4,14 +4,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.raj.Exchange.model.*;
 import com.raj.Exchange.repository.LogingRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.config.TaskNamespaceHandler;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import javax.security.auth.login.LoginContext;
@@ -30,7 +37,8 @@ public class CurrencyController {
     //LogTable logTable= new LogTable();
     @CrossOrigin
     @GetMapping("exchange")
-    public List<UsdToSearch> getCurrency() throws IOException {
+    @ResponseStatus(HttpStatus.OK)
+    public List<UsdToSearch> getCurrency() throws ResourceAccessException, IOException {
         String url = "https://api.nbp.pl/api/exchangerates/tables/A/?format=json";
         RestTemplate template = new RestTemplate();
         //Joke joke = template.getForObject("https://api.chucknorris.io/jokes/random", Joke.class);
@@ -39,9 +47,10 @@ public class CurrencyController {
                 HttpMethod.GET,
                 null, new ParameterizedTypeReference<List<UsdToSearch>>() {
                 }).getBody();
+        return gold;
+
         //System.out.println(httpRequest);
 
-        return gold;
 //        ObjectMapper objectMapper = new ObjectMapper();
 //        UsdToSearch[] listCurencies = (template.getForEntity(url,UsdToSearch[].class)).getBody();
 //        List<UsdToSearch> forObject = objectMapper.readValue(listCurencies.toString(),
@@ -52,7 +61,7 @@ public class CurrencyController {
 //                .map(UsdToSearch::getRates)
 //                .collect(Collectors.<Object>toList());
 //        response.forEach( s -> System.out.println(s));
-       // return forObject;
+        // return forObject;
 //        try {
 //            URL link = new URL(url);
 //            HttpURLConnection connection = (HttpURLConnection) link.openConnection();
