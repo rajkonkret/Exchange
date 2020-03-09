@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body onload="myOnLoad()">
-<p id="listcur"></p>
+<p id="listcur">ładowanie...</p>
 <form id="frm1">
     First currency: <input type="text" name="fname" value="pln"><br>
     Second currency: <input type="text" name="lname" value="eur"><br><br>
@@ -47,6 +47,7 @@ const url = "https://exchange-app-raj.herokuapp.com/api/exchange";
     fetch(url)
     .then(res => res.json())
     .then(res => {
+    document.getElementById("listcur").innerHTML ="";
     for (i = 0; i < res[0].rates.length; i++){
     document.getElementById("listcur").innerHTML += res[0].rates[i].code +" "
     }
