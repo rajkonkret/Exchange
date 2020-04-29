@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Exchange</title>
+
 </head>
+<style>
+     #listcur, #frm1, button {
+     background-color: #828ce0;
+    color: #ebae34;
+    }
+
+
+
+</style>
 <body onload="myOnLoad()">
-<p id="listcur">ładowanie...</p>
+<p id="listcur" >ładowanie...</p>
 <form id="frm1">
     First currency: <input type="text" name="fname" value="pln"><br>
     Second currency: <input type="text" name="lname" value="eur"><br><br>
@@ -54,6 +64,7 @@ const url = "https://exchange-app-raj.herokuapp.com/api/exchange";
     console.log(res);
     })
 }
+
 
 </script>
 </body>
