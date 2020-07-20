@@ -6,27 +6,43 @@
 
 </head>
 <style>
-     #listcur, #frm1, button {
-     background-color: #828ce0;
-    color: #ebae34;
+    * {
+    background-color: #9219b0
     }
+     #listcur, .frm1, button {
+        display: grid;
+        justify-content: center;
+        background-color: #9219b0;
+        color: white;
+    }
+    .frm2 {
+        display: grid;
+        justify-content: center;
+        background-color: #9219b0;
+        color: white;
+        font-size: 150%;
+    }
+    input[type="text"] {
+        background: #fff
+    }
+
 
 
 
 </style>
 <body onload="myOnLoad()">
-<p id="listcur" >ładowanie...</p>
-<form id="frm1">
-    First currency: <input type="text" name="fname" value="pln"><br>
+<p id="listcur">ładowanie...</p>
+<form id="frm1" class="frm1">
+    First currency: <input type="text"  name="fname" value="pln"><br>
     Second currency: <input type="text" name="lname" value="eur"><br><br>
     Value: <input type="text" name="lname" value="100"><br><br>
 </form>
+<div class="frm1">
+    <p>Exchange</p>
+    <button onclick="myFunction()">Do it!</button>
+</div>
 
-<p>Exchange</p>
-
-<button onclick="myFunction()">Do it!</button>
-
-<p id="demo"></p>
+<p id="demo" class="frm2"></p>
 
 <script>
 function myFunction() {
@@ -49,7 +65,7 @@ fetch(url, {
     })
     .then(res => res.json())
     .then(res => {
-    document.getElementById("demo").innerHTML = res;
+    document.getElementById("demo").innerHTML = ob.value + " " + ob.first.toUpperCase() + " = " + res.toFixed(2) + " " + ob.second.toUpperCase();
     })
 }
 function myOnLoad(){
@@ -64,6 +80,8 @@ const url = "https://exchange-app-raj.herokuapp.com/api/exchange";
     console.log(res);
     })
 }
+
+
 
 
 </script>

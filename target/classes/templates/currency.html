@@ -6,25 +6,36 @@
 
 </head>
 <style>
-     #listcur, #frm1, button {
-     background-color: #828ce0;
-    color: #ebae34;
+    * {
+    background-color: #828ce0
     }
+     #listcur, .frm1, button {
+        display: grid;
+        justify-content: center;
+        background-color: #828ce0;
+        color: #ebae34;
+    }
+    input[type="text"] {
+        background: #fff
+    }
+
 
 
 
 </style>
 <body onload="myOnLoad()">
-<p id="listcur" >ładowanie...</p>
-<form id="frm1">
-    First currency: <input type="text" name="fname" value="pln"><br>
+<p id="listcur">ładowanie...</p>
+<form class="frm1">
+    First currency: <input type="text" class="frm1" name="fname" value="pln"><br>
     Second currency: <input type="text" name="lname" value="eur"><br><br>
     Value: <input type="text" name="lname" value="100"><br><br>
 </form>
+<div class="frm1">
+    <p>Exchange</p>
 
-<p>Exchange</p>
+    <button onclick="myFunction()">Do it!</button>
+</div>
 
-<button onclick="myFunction()">Do it!</button>
 
 <p id="demo"></p>
 
@@ -64,6 +75,8 @@ const url = "https://exchange-app-raj.herokuapp.com/api/exchange";
     console.log(res);
     })
 }
+
+
 
 
 </script>

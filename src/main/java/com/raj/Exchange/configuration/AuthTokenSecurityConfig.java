@@ -67,6 +67,7 @@ public class AuthTokenSecurityConfig extends WebSecurityConfigurerAdapter {
                 logTable.setName(filter.getRequestUrl() + filter.getRequestMethod());
                 //logTable.setName("GET");
                 logingRepository.save(logTable);
+                
                 if (!authHeaderValue.equals(principal)) {
                     System.out.println("Bad" + filter.getRequestUrl());
 //                    LogTable logTable= new LogTable();
@@ -87,7 +88,7 @@ public class AuthTokenSecurityConfig extends WebSecurityConfigurerAdapter {
         });
         System.out.println("url=" + filter.getRequestUrl());
         httpSecurity.
-                antMatcher("/api/**")
+                antMatcher("/api/exchange/**")
                 .csrf()
                 .disable()
                 .cors()
